@@ -1,0 +1,25 @@
+# example - put in separate file and add to gitignore
+apiVersion: v1
+kind: Secret
+metadata:
+  name: bgg-secret
+  namespace: bggns
+  labels:
+    app: bgg
+    name: bgg-secret
+type: Opaque
+data:
+  BGG_DB_PASSWORD: Y2hhbmdlaXQ=
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: bgg-cm
+  namespace: bggns
+  labels:
+    app: bgg
+    name: bgg-cm
+data:
+  BGG_DB_USER: root
+  BGG_DB_HOST: bggdb-svc.bggns.svc.cluster.local
